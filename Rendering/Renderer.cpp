@@ -8,31 +8,6 @@
 #include <iostream>
 #include <simd/simd.h>
 
-static const char* shaderSrc = R"(
-    #include <metal_stdlib>
-    using namespace metal;
-    struct v2f
-    {
-        float4 position [[position]];
-        half3 color;
-    };
-    v2f vertex vertexMain( uint vertexId [[vertex_id]],
-                           device const float3* positions [[buffer(0)]],
-                           device const float3* colors [[buffer(1)]] )
-    {
-        v2f o;
-        o.position = float4( positions[ vertexId ], 1.0 );
-        o.color = half3( colors[ vertexId ] );
-        return o;
-    }
-    half4 fragment fragmentMain( v2f in [[stage_in]] )
-    {
-        return half4( in.color, 1.0 );
-    }
-)";
-
-
-
 Renderer::Renderer(MTL::Device* pDevice) : _pDevice(pDevice->retain()) {
     _pCommandQueue = _pDevice->newCommandQueue();
     buildShaders();
@@ -73,7 +48,7 @@ void Renderer::draw(MTK::View* pView) {
 void Renderer::buildShaders() {
     NS::Error* pError = nullptr;
     
-    MTL::Library* pLibrary = _pDevice->newLibrary(NS::String::string(shaderSrc, NS::UTF8StringEncoding), nullptr, &pError);
+    MTL::Library* pLibrary = _pDevice->newDefaultLibrary();
     
     if (!pLibrary) {
         std::cerr << pError->localizedDescription()->utf8String() << "\n";

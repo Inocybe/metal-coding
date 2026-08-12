@@ -12,6 +12,12 @@
 		8E4D0CC53026AD2200CDA2A3 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4D0CC43026AD2200CDA2A3 /* Metal.framework */; };
 		8E4D0CC73026AD2900CDA2A3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4D0CC63026AD2900CDA2A3 /* QuartzCore.framework */; };
 		8E4D0CCB3026B02900CDA2A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4D0CCA3026B02900CDA2A3 /* Cocoa.framework */; };
+		8EFB4D8D302CFD3900E43E8A /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB4D87302CFD3900E43E8A /* AppDelegate.cpp */; };
+		8EFB4D8E302CFD3900E43E8A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB4D88302CFD3900E43E8A /* main.cpp */; };
+		8EFB4D8F302CFD3900E43E8A /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB4D8A302CFD3900E43E8A /* Renderer.cpp */; };
+		8EFB4D90302CFD3900E43E8A /* ViewDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB4D8C302CFD3900E43E8A /* ViewDelegate.cpp */; };
+		8EFB4D91302CFD3900E43E8A /* AppDelegate.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB4D86302CFD3900E43E8A /* AppDelegate.hpp */; };
+		8EFB4E23302D198D00E43E8A /* default.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB4E22302D198D00E43E8A /* default.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -7394,27 +7400,17 @@
 		8E4FCBBB302945E300488A38 /* mlx.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; path = mlx.metallib; sourceTree = "<group>"; };
 		8E4FCBBC302945E300488A38 /* ossl-modules */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ossl-modules"; sourceTree = "<group>"; };
 		8EB0BFBC302C38EA005D5400 /* LearnMetalCpp-GLFW-Guide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "LearnMetalCpp-GLFW-Guide.md"; sourceTree = "<group>"; };
+		8EFB4D86302CFD3900E43E8A /* AppDelegate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AppDelegate.hpp; sourceTree = "<group>"; };
+		8EFB4D87302CFD3900E43E8A /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
+		8EFB4D88302CFD3900E43E8A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8EFB4D89302CFD3900E43E8A /* Renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
+		8EFB4D8A302CFD3900E43E8A /* Renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
+		8EFB4D8B302CFD3900E43E8A /* ViewDelegate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewDelegate.hpp; sourceTree = "<group>"; };
+		8EFB4D8C302CFD3900E43E8A /* ViewDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewDelegate.cpp; sourceTree = "<group>"; };
+		8EFB4E22302D198D00E43E8A /* default.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = default.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		8E00C543302702B20054EC29 /* Exceptions for "learning-metal" folder in "Compile Sources" phase from "learning-metal" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 8E4D0B913026AC3300CDA2A3 /* Sources */;
-			membershipExceptions = (
-				AppDelegate.hpp,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8E4D0B973026AC3300CDA2A3 /* learning-metal */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				8E00C543302702B20054EC29 /* Exceptions for "learning-metal" folder in "Compile Sources" phase from "learning-metal" target */,
-			);
-			path = "learning-metal";
-			sourceTree = "<group>";
-		};
 		8E4D0CC03026AC5300CDA2A3 /* metal-cpp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "metal-cpp";
@@ -7475,7 +7471,9 @@
 		8E4D0B8C3026AC3300CDA2A3 = {
 			isa = PBXGroup;
 			children = (
-				8E4D0B973026AC3300CDA2A3 /* learning-metal */,
+				8EFB4E27302D1FCE00E43E8A /* Shaders */,
+				8EFB4E26302D1FC800E43E8A /* Rendering */,
+				8EFB4E25302D1FB800E43E8A /* AppLifeCycle */,
 				8E4D0B963026AC3300CDA2A3 /* Products */,
 				8E4D0CC03026AC5300CDA2A3 /* metal-cpp */,
 				8E4D0CC13026AD1900CDA2A3 /* Frameworks */,
@@ -22184,6 +22182,35 @@
 			path = ../../../../../opt/homebrew/lib;
 			sourceTree = "<group>";
 		};
+		8EFB4E25302D1FB800E43E8A /* AppLifeCycle */ = {
+			isa = PBXGroup;
+			children = (
+				8EFB4D86302CFD3900E43E8A /* AppDelegate.hpp */,
+				8EFB4D87302CFD3900E43E8A /* AppDelegate.cpp */,
+				8EFB4D88302CFD3900E43E8A /* main.cpp */,
+			);
+			path = AppLifeCycle;
+			sourceTree = "<group>";
+		};
+		8EFB4E26302D1FC800E43E8A /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				8EFB4D89302CFD3900E43E8A /* Renderer.hpp */,
+				8EFB4D8A302CFD3900E43E8A /* Renderer.cpp */,
+				8EFB4D8B302CFD3900E43E8A /* ViewDelegate.hpp */,
+				8EFB4D8C302CFD3900E43E8A /* ViewDelegate.cpp */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		8EFB4E27302D1FCE00E43E8A /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				8EFB4E22302D198D00E43E8A /* default.metal */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -22200,7 +22227,6 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				8E4D0B973026AC3300CDA2A3 /* learning-metal */,
 				8E4D0CC03026AC5300CDA2A3 /* metal-cpp */,
 			);
 			name = "learning-metal";
@@ -22248,6 +22274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EFB4D8D302CFD3900E43E8A /* AppDelegate.cpp in Sources */,
+				8EFB4D8E302CFD3900E43E8A /* main.cpp in Sources */,
+				8EFB4D91302CFD3900E43E8A /* AppDelegate.hpp in Sources */,
+				8EFB4D8F302CFD3900E43E8A /* Renderer.cpp in Sources */,
+				8EFB4E23302D198D00E43E8A /* default.metal in Sources */,
+				8EFB4D90302CFD3900E43E8A /* ViewDelegate.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
