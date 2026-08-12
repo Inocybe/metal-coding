@@ -7393,6 +7393,7 @@
 		8E4FCBBA302945E300488A38 /* libzstd.1.5.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libzstd.1.5.7.dylib; sourceTree = "<group>"; };
 		8E4FCBBB302945E300488A38 /* mlx.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; path = mlx.metallib; sourceTree = "<group>"; };
 		8E4FCBBC302945E300488A38 /* ossl-modules */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ossl-modules"; sourceTree = "<group>"; };
+		8EB0BFBC302C38EA005D5400 /* LearnMetalCpp-GLFW-Guide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "LearnMetalCpp-GLFW-Guide.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
@@ -7479,6 +7480,7 @@
 				8E4D0CC03026AC5300CDA2A3 /* metal-cpp */,
 				8E4D0CC13026AD1900CDA2A3 /* Frameworks */,
 				8E37B131302BB72B00869841 /* metal-cpp-extensions */,
+				8EB0BFBC302C38EA005D5400 /* LearnMetalCpp-GLFW-Guide.md */,
 			);
 			sourceTree = "<group>";
 		};
