@@ -34,17 +34,6 @@
 
 /* Begin PBXFileReference section */
 		8E37B11A302BB23300869841 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
-		8E37B124302BB72B00869841 /* AppKit.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AppKit.hpp; sourceTree = "<group>"; };
-		8E37B125302BB72B00869841 /* AppKitPrivate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AppKitPrivate.hpp; sourceTree = "<group>"; };
-		8E37B126302BB72B00869841 /* NSApplication.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NSApplication.hpp; sourceTree = "<group>"; };
-		8E37B127302BB72B00869841 /* NSMenu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NSMenu.hpp; sourceTree = "<group>"; };
-		8E37B128302BB72B00869841 /* NSMenuItem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NSMenuItem.hpp; sourceTree = "<group>"; };
-		8E37B129302BB72B00869841 /* NSRunningApplication.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NSRunningApplication.hpp; sourceTree = "<group>"; };
-		8E37B12A302BB72B00869841 /* NSView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NSView.hpp; sourceTree = "<group>"; };
-		8E37B12B302BB72B00869841 /* NSWindow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NSWindow.hpp; sourceTree = "<group>"; };
-		8E37B12D302BB72B00869841 /* MetalKit.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MetalKit.hpp; sourceTree = "<group>"; };
-		8E37B12E302BB72B00869841 /* MetalKitPrivate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MetalKitPrivate.hpp; sourceTree = "<group>"; };
-		8E37B12F302BB72B00869841 /* MTKView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MTKView.hpp; sourceTree = "<group>"; };
 		8E4D0B953026AC3300CDA2A3 /* learning-metal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "learning-metal"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4D0CC23026AD1900CDA2A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8E4D0CC43026AD2200CDA2A3 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -7411,9 +7400,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8E4D0CC03026AC5300CDA2A3 /* metal-cpp */ = {
+		8EFB4EB9302D223400E43E8A /* metal-cpp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "metal-cpp";
+			sourceTree = "<group>";
+		};
+		8EFB4EC7302D223400E43E8A /* metal-cpp-extensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "metal-cpp-extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -7434,50 +7428,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8E37B12C302BB72B00869841 /* AppKit */ = {
-			isa = PBXGroup;
-			children = (
-				8E37B124302BB72B00869841 /* AppKit.hpp */,
-				8E37B125302BB72B00869841 /* AppKitPrivate.hpp */,
-				8E37B126302BB72B00869841 /* NSApplication.hpp */,
-				8E37B127302BB72B00869841 /* NSMenu.hpp */,
-				8E37B128302BB72B00869841 /* NSMenuItem.hpp */,
-				8E37B129302BB72B00869841 /* NSRunningApplication.hpp */,
-				8E37B12A302BB72B00869841 /* NSView.hpp */,
-				8E37B12B302BB72B00869841 /* NSWindow.hpp */,
-			);
-			path = AppKit;
-			sourceTree = "<group>";
-		};
-		8E37B130302BB72B00869841 /* MetalKit */ = {
-			isa = PBXGroup;
-			children = (
-				8E37B12D302BB72B00869841 /* MetalKit.hpp */,
-				8E37B12E302BB72B00869841 /* MetalKitPrivate.hpp */,
-				8E37B12F302BB72B00869841 /* MTKView.hpp */,
-			);
-			path = MetalKit;
-			sourceTree = "<group>";
-		};
-		8E37B131302BB72B00869841 /* metal-cpp-extensions */ = {
-			isa = PBXGroup;
-			children = (
-				8E37B12C302BB72B00869841 /* AppKit */,
-				8E37B130302BB72B00869841 /* MetalKit */,
-			);
-			path = "metal-cpp-extensions";
-			sourceTree = "<group>";
-		};
 		8E4D0B8C3026AC3300CDA2A3 = {
 			isa = PBXGroup;
 			children = (
+				8EFB4E28302D21A400E43E8A /* External */,
 				8EFB4E27302D1FCE00E43E8A /* Shaders */,
 				8EFB4E26302D1FC800E43E8A /* Rendering */,
 				8EFB4E25302D1FB800E43E8A /* AppLifeCycle */,
 				8E4D0B963026AC3300CDA2A3 /* Products */,
-				8E4D0CC03026AC5300CDA2A3 /* metal-cpp */,
 				8E4D0CC13026AD1900CDA2A3 /* Frameworks */,
-				8E37B131302BB72B00869841 /* metal-cpp-extensions */,
 				8EB0BFBC302C38EA005D5400 /* LearnMetalCpp-GLFW-Guide.md */,
 			);
 			sourceTree = "<group>";
@@ -22211,6 +22170,15 @@
 			path = Shaders;
 			sourceTree = "<group>";
 		};
+		8EFB4E28302D21A400E43E8A /* External */ = {
+			isa = PBXGroup;
+			children = (
+				8EFB4EB9302D223400E43E8A /* metal-cpp */,
+				8EFB4EC7302D223400E43E8A /* metal-cpp-extensions */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -22225,9 +22193,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				8E4D0CC03026AC5300CDA2A3 /* metal-cpp */,
 			);
 			name = "learning-metal";
 			packageProductDependencies = (
@@ -22406,8 +22371,8 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/metal-cpp-extensions",
-					"$(PROJECT_DIR)/metal-cpp",
+					"$(PROJECT_DIR)/External/metal-cpp-extensions",
+					"$(PROJECT_DIR)/External/metal-cpp",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -22419,8 +22384,8 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/metal-cpp-extensions",
-					"$(PROJECT_DIR)/metal-cpp",
+					"$(PROJECT_DIR)/External/metal-cpp-extensions",
+					"$(PROJECT_DIR)/External/metal-cpp",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
