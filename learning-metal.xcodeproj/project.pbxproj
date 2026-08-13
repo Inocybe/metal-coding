@@ -3709,11 +3709,11 @@
 		8E4FBB8F302945B400488A38 /* libzstd.1.5.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libzstd.1.5.7.dylib; sourceTree = "<group>"; };
 		8E4FBB90302945B400488A38 /* mlx.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; path = mlx.metallib; sourceTree = "<group>"; };
 		8E4FBB91302945B400488A38 /* ossl-modules */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ossl-modules"; sourceTree = "<group>"; };
-		8E4FBB93302945CC00488A38 /* glfw3Config.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; path = glfw3Config.cmake; sourceTree = "<group>"; };
-		8E4FBB94302945CC00488A38 /* glfw3ConfigVersion.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; path = glfw3ConfigVersion.cmake; sourceTree = "<group>"; };
-		8E4FBB95302945CC00488A38 /* glfw3Targets.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; path = glfw3Targets.cmake; sourceTree = "<group>"; };
-		8E4FBB96302945CC00488A38 /* glfw3Targets-release.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; path = "glfw3Targets-release.cmake"; sourceTree = "<group>"; };
-		8E4FBB99302945CC00488A38 /* glfw3.pc */ = {isa = PBXFileReference; lastKnownFileType = text; path = glfw3.pc; sourceTree = "<group>"; };
+		8E4FBB93302945CC00488A38 /* glfw3Config.cmake */ = {isa = PBXFileReference; lastKnownFileType = file; path = glfw3Config.cmake; sourceTree = "<group>"; };
+		8E4FBB94302945CC00488A38 /* glfw3ConfigVersion.cmake */ = {isa = PBXFileReference; lastKnownFileType = file; path = glfw3ConfigVersion.cmake; sourceTree = "<group>"; };
+		8E4FBB95302945CC00488A38 /* glfw3Targets.cmake */ = {isa = PBXFileReference; lastKnownFileType = file; path = glfw3Targets.cmake; sourceTree = "<group>"; };
+		8E4FBB96302945CC00488A38 /* glfw3Targets-release.cmake */ = {isa = PBXFileReference; lastKnownFileType = file; path = "glfw3Targets-release.cmake"; sourceTree = "<group>"; };
+		8E4FBB99302945CC00488A38 /* glfw3.pc */ = {isa = PBXFileReference; lastKnownFileType = file; path = glfw3.pc; sourceTree = "<group>"; };
 		8E4FBB9B302945CC00488A38 /* libglfw.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.dylib; sourceTree = "<group>"; };
 		8E4FBB9C302945CC00488A38 /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.dylib; sourceTree = "<group>"; };
 		8E4FBB9D302945CC00488A38 /* libglfw.3.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.5.dylib; sourceTree = "<group>"; };
@@ -7431,12 +7431,11 @@
 		8E4D0B8C3026AC3300CDA2A3 = {
 			isa = PBXGroup;
 			children = (
-				8EFB4E28302D21A400E43E8A /* External */,
 				8EFB4E27302D1FCE00E43E8A /* Shaders */,
 				8EFB4E26302D1FC800E43E8A /* Rendering */,
 				8EFB4E25302D1FB800E43E8A /* AppLifeCycle */,
 				8E4D0B963026AC3300CDA2A3 /* Products */,
-				8E4D0CC13026AD1900CDA2A3 /* Frameworks */,
+				8EFB4E28302D21A400E43E8A /* External */,
 				8EB0BFBC302C38EA005D5400 /* LearnMetalCpp-GLFW-Guide.md */,
 			);
 			sourceTree = "<group>";
@@ -14779,7 +14778,7 @@
 				8E4FBB91302945B400488A38 /* ossl-modules */,
 			);
 			name = lib;
-			path = ../../../../../opt/homebrew/lib;
+			path = ../../../../../../opt/homebrew/lib;
 			sourceTree = "<group>";
 		};
 		8E4FBB97302945CC00488A38 /* glfw3 */ = {
@@ -14820,7 +14819,7 @@
 				8E4FBB9E302945CC00488A38 /* libglfw3.a */,
 			);
 			name = lib;
-			path = ../../../../../opt/homebrew/Cellar/glfw/3.5.1/lib;
+			path = ../../../../../../opt/homebrew/Cellar/glfw/3.5.1/lib;
 			sourceTree = "<group>";
 		};
 		8E4FBBA7302945E300488A38 /* cmake */ = {
@@ -22138,7 +22137,7 @@
 				8E4FCBBC302945E300488A38 /* ossl-modules */,
 			);
 			name = lib;
-			path = ../../../../../opt/homebrew/lib;
+			path = ../../../../../../opt/homebrew/lib;
 			sourceTree = "<group>";
 		};
 		8EFB4E25302D1FB800E43E8A /* AppLifeCycle */ = {
@@ -22175,6 +22174,7 @@
 			children = (
 				8EFB4EB9302D223400E43E8A /* metal-cpp */,
 				8EFB4EC7302D223400E43E8A /* metal-cpp-extensions */,
+				8E4D0CC13026AD1900CDA2A3 /* Frameworks */,
 			);
 			path = External;
 			sourceTree = "<group>";
