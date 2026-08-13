@@ -7389,6 +7389,8 @@
 		8E4FCBBB302945E300488A38 /* mlx.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; path = mlx.metallib; sourceTree = "<group>"; };
 		8E4FCBBC302945E300488A38 /* ossl-modules */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ossl-modules"; sourceTree = "<group>"; };
 		8EB0BFBC302C38EA005D5400 /* LearnMetalCpp-GLFW-Guide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "LearnMetalCpp-GLFW-Guide.md"; sourceTree = "<group>"; };
+		8ECC1102302E81F20092FB49 /* SharedStructures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedStructures.h; sourceTree = "<group>"; };
+		8ECC1103302E90110092FB49 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8EFB4D86302CFD3900E43E8A /* AppDelegate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AppDelegate.hpp; sourceTree = "<group>"; };
 		8EFB4D87302CFD3900E43E8A /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		8EFB4D88302CFD3900E43E8A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -7431,6 +7433,7 @@
 		8E4D0B8C3026AC3300CDA2A3 = {
 			isa = PBXGroup;
 			children = (
+				8ECC1103302E90110092FB49 /* .gitignore */,
 				8EFB4E27302D1FCE00E43E8A /* Shaders */,
 				8EFB4E26302D1FC800E43E8A /* Rendering */,
 				8EFB4E25302D1FB800E43E8A /* AppLifeCycle */,
@@ -22153,6 +22156,7 @@
 		8EFB4E26302D1FC800E43E8A /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
+				8ECC1102302E81F20092FB49 /* SharedStructures.h */,
 				8EFB4D89302CFD3900E43E8A /* Renderer.hpp */,
 				8EFB4D8A302CFD3900E43E8A /* Renderer.cpp */,
 				8EFB4D8B302CFD3900E43E8A /* ViewDelegate.hpp */,
@@ -22375,6 +22379,7 @@
 					"$(PROJECT_DIR)/External/metal-cpp",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/Rendering";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -22388,6 +22393,7 @@
 					"$(PROJECT_DIR)/External/metal-cpp",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/Rendering";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

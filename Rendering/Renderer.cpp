@@ -7,6 +7,8 @@
 #include "Renderer.hpp"
 #include <iostream>
 #include <simd/simd.h>
+#include <cstring>
+#include "SharedStructures.h"
 
 Renderer::Renderer(MTL::Device* pDevice) : _pDevice(pDevice->retain()) {
     _pCommandQueue = _pDevice->newCommandQueue();
@@ -17,8 +19,7 @@ Renderer::Renderer(MTL::Device* pDevice) : _pDevice(pDevice->retain()) {
 
 Renderer::~Renderer() {
     _pPipelineState->release();
-    _pVertexPositionsBuffer->release();
-    _pVertexColorsBuffer->release();
+    _pVertexBuffer->release();
     
     _pCommandQueue->release();
     _pDevice->release();
@@ -34,8 +35,7 @@ void Renderer::draw(MTK::View* pView) {
     
     // set render pipeline state for shaders
     pEnc->setRenderPipelineState(_pPipelineState);
-    pEnc->setVertexBuffer(_pVertexPositionsBuffer, /*offset*/0, /*index*/0);
-    pEnc->setVertexBuffer(_pVertexColorsBuffer, 0, 1);
+    pEnc->setVertexBuffer(_pVertexBuffer, /*offset*/0, /*index*/BufferIndexVerticesAttributes);
     pEnc->drawPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(0), NS::UInteger(3));
     
     pEnc->endEncoding();
@@ -75,30 +75,30 @@ void Renderer::buildShaders() {
 }
 
 void Renderer::buildBuffers() {
-    using simd::float3;
-    
+    using simd::float4;
     const size_t numVertices = 3;
-    float3 positions[numVertices] = {
-        {0.0,  0.5, 0.0},
-        {-0.5, -0.5, 0.0},
-        {0.5, -0.5, 0.0}
+    
+    Vertex vertices[numVertices] = {
+        {
+            { 0.0f,  0.5f, 0.0f, 1.0f },
+            { 1.0f, 0.0f, 0.0f, 1.0f }
+        },
+        {
+            { -0.5f, -0.5f, 0.0f, 1.0f },
+            { 0.0f, 1.0f, 0.0f, 1.0f }
+        },
+        {
+            {  0.5f, -0.5f, 0.0f, 1.0f },
+            { 0.0f, 0.0f, 1.0f, 1.0f }
+        }
     };
-    float3 colors[numVertices] = {
-        {1.0, 0.0, 0.0},
-        {0.0, 1.0, 0.0},
-        {0.0, 0.0, 1.0}
-    };
     
-    const size_t positionsSize = sizeof(positions);
-    const size_t colorsSize = sizeof(colors);
+    const size_t bufferSize = sizeof(vertices);
     
-    _pVertexPositionsBuffer = _pDevice->newBuffer(positionsSize, MTL::ResourceStorageModeManaged);
-    _pVertexColorsBuffer = _pDevice->newBuffer(colorsSize, MTL::ResourceStorageModeManaged);
+    _pVertexBuffer = _pDevice->newBuffer(bufferSize, MTL::ResourceStorageModeManaged);
     
-    memcpy(_pVertexPositionsBuffer->contents(), positions, positionsSize);
-    memcpy(_pVertexColorsBuffer->contents(), colors, colorsSize);
+    memcpy(_pVertexBuffer->contents(), vertices, bufferSize);
     
-    _pVertexPositionsBuffer->didModifyRange(NS::Range::Make(0, positionsSize));
-    _pVertexColorsBuffer->didModifyRange(NS::Range::Make(0, colorsSize));
+    _pVertexBuffer->didModifyRange(NS::Range::Make(0, bufferSize));
 }
 
