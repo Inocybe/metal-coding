@@ -10,6 +10,7 @@
 
 #include <Metal/Metal.hpp>
 #include <MetalKit/MetalKit.hpp>
+#include "SharedStructures.h"
 
 class Renderer {
 public:
@@ -25,6 +26,5 @@ private:
     
     // shader variables
     MTL::RenderPipelineState* _pPipelineState;
-    MTL::Buffer* _pVertexPositionsBuffer;
-    MTL::Buffer* _pVertexColorsBuffer;
+    MTL::Buffer* _pVertexBuffer;
 };
