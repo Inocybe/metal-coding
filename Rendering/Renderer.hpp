@@ -26,5 +26,10 @@ private:
     
     // shader variables
     MTL::RenderPipelineState* _pPipelineState;
+    
+    MTL::Library* _pShaderLibrary;
     MTL::Buffer* _pVertexBuffer;
+    MTL::Buffer* _pArgBuffer;
+    MTL::Function* _pVertexFn;
+
 };

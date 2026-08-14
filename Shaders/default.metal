@@ -11,7 +11,9 @@
 using namespace metal;
 
 
-
+struct VertexData {
+  device Vertex* vertices [[id(ArgumentBufferIDVertices)]];
+};
 
 struct v2f
 {
@@ -19,10 +21,10 @@ struct v2f
     half4 color;
 };
 
-v2f vertex vertexMain(uint vertexId [[vertex_id]], device const Vertex* vertices[[buffer(BufferIndexVerticesAttributes)]]) {
+v2f vertex vertexMain(uint vertexId [[vertex_id]], device const VertexData* argBuffer [[buffer(BufferIndexVerticesAttributes)]]) {
     v2f out;
-    out.position = vertices[vertexId].position;
-    out.color = vertices[vertexId].color;
+    out.position = argBuffer->vertices[vertexId].position;
+    out.color = argBuffer->vertices[vertexId].color;
     return out;
 }
 

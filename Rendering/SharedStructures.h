@@ -24,6 +24,11 @@ enum BufferIndices {
     BufferIndexUniforms = 1
 };
 
+
+enum ArgumentBufferID {
+    ArgumentBufferIDVertices = 0
+};
+
 struct Vertex {
     NS_SIMD::float4 position;
 #ifdef __METAL_VERSION__

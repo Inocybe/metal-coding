@@ -18,9 +18,12 @@ Renderer::Renderer(MTL::Device* pDevice) : _pDevice(pDevice->retain()) {
 
 
 Renderer::~Renderer() {
+    // shader stuff
     _pPipelineState->release();
+    _pShaderLibrary->release();
     _pVertexBuffer->release();
-    
+    _pArgBuffer->release();
+    // other stuff
     _pCommandQueue->release();
     _pDevice->release();
 }
@@ -35,7 +38,8 @@ void Renderer::draw(MTK::View* pView) {
     
     // set render pipeline state for shaders
     pEnc->setRenderPipelineState(_pPipelineState);
-    pEnc->setVertexBuffer(_pVertexBuffer, /*offset*/0, /*index*/BufferIndexVerticesAttributes);
+    pEnc->setVertexBuffer(_pArgBuffer, /*offset*/0, /*index*/BufferIndexVerticesAttributes);
+    pEnc->useResource(_pVertexBuffer, MTL::ResourceUsageRead, MTL::RenderStageVertex);
     pEnc->drawPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(0), NS::UInteger(3));
     
     pEnc->endEncoding();
@@ -48,17 +52,17 @@ void Renderer::draw(MTK::View* pView) {
 void Renderer::buildShaders() {
     NS::Error* pError = nullptr;
     
-    MTL::Library* pLibrary = _pDevice->newDefaultLibrary();
-    
-    if (!pLibrary) {
+    _pShaderLibrary = _pDevice->newDefaultLibrary();
+            
+    if (!_pShaderLibrary) {
         std::cerr << pError->localizedDescription()->utf8String() << "\n";
         assert(false);
     }
     
-    MTL::Function* pVertexFn = pLibrary->newFunction(NS::String::string("vertexMain", NS::UTF8StringEncoding));
-    MTL::Function* pFragmentFn = pLibrary->newFunction(NS::String::string("fragmentMain", NS::UTF8StringEncoding));
+    _pVertexFn = _pShaderLibrary->newFunction(NS::String::string("vertexMain", NS::UTF8StringEncoding));
+    MTL::Function* pFragmentFn = _pShaderLibrary->newFunction(NS::String::string("fragmentMain", NS::UTF8StringEncoding));
     MTL::RenderPipelineDescriptor* pDesc = MTL::RenderPipelineDescriptor::alloc()->init();
-    pDesc->setVertexFunction(pVertexFn);
+    pDesc->setVertexFunction(_pVertexFn);
     pDesc->setFragmentFunction(pFragmentFn);
     pDesc->colorAttachments()->object(0)->setPixelFormat(MTL::PixelFormat::PixelFormatBGRA8Unorm_sRGB);
     
@@ -68,10 +72,8 @@ void Renderer::buildShaders() {
         assert(false);
     }
     
-    pVertexFn->release();
     pFragmentFn->release();
     pDesc->release();
-    pLibrary->release();
 }
 
 void Renderer::buildBuffers() {
@@ -94,11 +96,21 @@ void Renderer::buildBuffers() {
     };
     
     const size_t bufferSize = sizeof(vertices);
-    
     _pVertexBuffer = _pDevice->newBuffer(bufferSize, MTL::ResourceStorageModeManaged);
-    
     memcpy(_pVertexBuffer->contents(), vertices, bufferSize);
-    
     _pVertexBuffer->didModifyRange(NS::Range::Make(0, bufferSize));
+    
+    // argument buffer time
+    MTL::ArgumentEncoder* pArgEncoder = _pVertexFn->newArgumentEncoder(BufferIndexVerticesAttributes);
+    
+    _pArgBuffer = _pDevice->newBuffer(pArgEncoder->encodedLength(), MTL::ResourceStorageModeManaged);
+    
+    pArgEncoder->setArgumentBuffer(_pArgBuffer, /*offset*/0);
+    pArgEncoder->setBuffer(_pVertexBuffer, /*offset*/0, ArgumentBufferIDVertices);
+    
+    _pArgBuffer->didModifyRange(NS::Range::Make(0, _pArgBuffer->length()));
+    
+    pArgEncoder->release();
+    _pVertexFn->release();
 }
 
