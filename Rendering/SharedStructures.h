@@ -21,15 +21,23 @@ using namespace metal;
 
 enum BufferIndices {
     BufferIndexVerticesAttributes = 0,
-    BufferIndexUniforms = 1
+    BufferIndexFrameData = 1
 };
 
+
+// alignas makes it so sending data works for both metal and c++ compilers
+struct alignas(16) FrameData {
+    float angle;
+};
+
+
 struct Vertex {
-    NS_SIMD::float4 position;
 #ifdef __METAL_VERSION__
+    half4 position;
     half4 color;
 #else
-    simd::packed::half4 color;
+    NS_SIMD::packed::half4 position;
+    NS_SIMD::packed::half4 color;
 #endif
 };
 

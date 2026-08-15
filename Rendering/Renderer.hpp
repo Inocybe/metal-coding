@@ -20,11 +20,21 @@ public:
     void draw(MTK::View* pView);
     void buildShaders();
     void buildBuffers();
+    
+    static const int kMaxFramesInFlight = 3;
 private:
+    void buildFrameData();
+    
     MTL::Device* _pDevice;
     MTL::CommandQueue* _pCommandQueue;
     
     // shader variables
     MTL::RenderPipelineState* _pPipelineState;
     MTL::Buffer* _pVertexBuffer;
+    MTL::Buffer* _pFrameData[kMaxFramesInFlight]; // an array for tripple buffering, some sort of way to prevent tearing
+    
+    // animation and sychronization state
+    dispatch_semaphore_t _semaphore;
+    float _angle = 0.0;
+    int _frame = 0;
 };
