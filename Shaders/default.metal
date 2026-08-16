@@ -19,10 +19,16 @@ struct v2f
     half4 color;
 };
 
-v2f vertex vertexMain(uint vertexId [[vertex_id]], device const Vertex* vertices[[buffer(BufferIndexVerticesAttributes)]]) {
+v2f vertex vertexMain(
+                    device const VertexData*   vertexData   [[buffer(BufferIndexVerticesAttributes)]],
+                    device const InstanceData* instanceData [[buffer(BufferIndexInstanceAttributes)]],
+                    uint vertexId   [[vertex_id]],
+                    uint instanceId [[instance_id]]) {
+    
     v2f out;
-    out.position = vertices[vertexId].position;
-    out.color = vertices[vertexId].color;
+    float4 pos = vertexData[vertexId].position;               // already float4 in your struct
+    out.position = instanceData[instanceId].instanceTransform * pos;
+    out.color = (half4)instanceData[instanceId].instanceColor;
     return out;
 }
 

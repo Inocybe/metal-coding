@@ -21,17 +21,28 @@ using namespace metal;
 
 enum BufferIndices {
     BufferIndexVerticesAttributes = 0,
-    BufferIndexUniforms = 1
+    BufferIndexInstanceAttributes = 1
 };
 
-struct Vertex {
+struct VertexData {
+    simd::float4 position;
+    simd::float4 color;
+// --- OLD ---
+/*
     NS_SIMD::float4 position;
 #ifdef __METAL_VERSION__
     half4 color;
 #else
     simd::packed::half4 color;
 #endif
+ */
 };
+
+struct InstanceData {
+    simd::float4x4 instanceTransform;
+    simd::float4 instanceColor;
+};
+
 
 
 #endif

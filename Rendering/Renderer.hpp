@@ -20,6 +20,9 @@ public:
     void draw(MTK::View* pView);
     void buildShaders();
     void buildBuffers();
+    
+    static const int kMaxFramesInFlight = 3;
+    static const int kNumInstances = 32;
 private:
     MTL::Device* _pDevice;
     MTL::CommandQueue* _pCommandQueue;
@@ -27,4 +30,10 @@ private:
     // shader variables
     MTL::RenderPipelineState* _pPipelineState;
     MTL::Buffer* _pVertexBuffer;
+    MTL::Buffer* _pIndexBuffer;
+    MTL::Buffer* _pInstanceBuffer[kMaxFramesInFlight];
+    
+    dispatch_semaphore_t _semaphore;
+    float _angle = 0.0;
+    int _frame = 0;
 };
