@@ -12,6 +12,7 @@
 		8E4D0CC53026AD2200CDA2A3 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4D0CC43026AD2200CDA2A3 /* Metal.framework */; };
 		8E4D0CC73026AD2900CDA2A3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4D0CC63026AD2900CDA2A3 /* QuartzCore.framework */; };
 		8E4D0CCB3026B02900CDA2A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4D0CCA3026B02900CDA2A3 /* Cocoa.framework */; };
+		8E571146303D2DAE00EF3B5A /* Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E571145303D2DAD00EF3B5A /* Math.cpp */; };
 		8EFB4D8D302CFD3900E43E8A /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB4D87302CFD3900E43E8A /* AppDelegate.cpp */; };
 		8EFB4D8E302CFD3900E43E8A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB4D88302CFD3900E43E8A /* main.cpp */; };
 		8EFB4D8F302CFD3900E43E8A /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB4D8A302CFD3900E43E8A /* Renderer.cpp */; };
@@ -7388,6 +7389,8 @@
 		8E4FCBBA302945E300488A38 /* libzstd.1.5.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libzstd.1.5.7.dylib; sourceTree = "<group>"; };
 		8E4FCBBB302945E300488A38 /* mlx.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; path = mlx.metallib; sourceTree = "<group>"; };
 		8E4FCBBC302945E300488A38 /* ossl-modules */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ossl-modules"; sourceTree = "<group>"; };
+		8E571144303D2DA900EF3B5A /* Math.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Math.hpp; sourceTree = "<group>"; };
+		8E571145303D2DAD00EF3B5A /* Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Math.cpp; sourceTree = "<group>"; };
 		8EB0BFBC302C38EA005D5400 /* LearnMetalCpp-GLFW-Guide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "LearnMetalCpp-GLFW-Guide.md"; sourceTree = "<group>"; };
 		8ECC1102302E81F20092FB49 /* SharedStructures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedStructures.h; sourceTree = "<group>"; };
 		8ECC1103302E90110092FB49 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -22156,6 +22159,8 @@
 		8EFB4E26302D1FC800E43E8A /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
+				8E571145303D2DAD00EF3B5A /* Math.cpp */,
+				8E571144303D2DA900EF3B5A /* Math.hpp */,
 				8ECC1102302E81F20092FB49 /* SharedStructures.h */,
 				8EFB4D89302CFD3900E43E8A /* Renderer.hpp */,
 				8EFB4D8A302CFD3900E43E8A /* Renderer.cpp */,
@@ -22247,6 +22252,7 @@
 				8EFB4D8E302CFD3900E43E8A /* main.cpp in Sources */,
 				8EFB4D91302CFD3900E43E8A /* AppDelegate.hpp in Sources */,
 				8EFB4D8F302CFD3900E43E8A /* Renderer.cpp in Sources */,
+				8E571146303D2DAE00EF3B5A /* Math.cpp in Sources */,
 				8EFB4E23302D198D00E43E8A /* default.metal in Sources */,
 				8EFB4D90302CFD3900E43E8A /* ViewDelegate.cpp in Sources */,
 			);

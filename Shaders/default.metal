@@ -22,12 +22,16 @@ struct v2f
 v2f vertex vertexMain(
                     device const VertexData*   vertexData   [[buffer(BufferIndexVerticesAttributes)]],
                     device const InstanceData* instanceData [[buffer(BufferIndexInstanceAttributes)]],
+                    device const CameraData&  cameraData   [[buffer(BufferIndexCameraAttributes)]],
                     uint vertexId   [[vertex_id]],
                     uint instanceId [[instance_id]]) {
     
     v2f out;
     float4 pos = vertexData[vertexId].position;               // already float4 in your struct
-    out.position = instanceData[instanceId].instanceTransform * pos;
+    pos = instanceData[instanceId].instanceTransform * pos; // Apply instance transform first
+    pos = cameraData.perspectiveTransform * cameraData.worldTransform * pos; // Then apply camera transforms
+    
+    out.position = pos;
     out.color = (half4)instanceData[instanceId].instanceColor;
     return out;
 }
