@@ -11,7 +11,7 @@
 
 class MyMTKViewDelegate : public MTK::ViewDelegate {
 public:
-    MyMTKViewDelegate(MTL::Device* pDevice);
+    MyMTKViewDelegate(MTL::Device* pDevice, MTK::View* pView);
     virtual ~MyMTKViewDelegate() override;
     virtual void drawInMTKView(MTK::View* pView) override;
 private:

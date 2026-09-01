@@ -72,7 +72,7 @@ void MyAppDelegate::applicationDidFinishLaunching(NS::Notification *pNotificatio
     _pMtkView->setColorPixelFormat(MTL::PixelFormatBGRA8Unorm_sRGB);
     _pMtkView->setClearColor(MTL::ClearColor::Make(0.2, 0.2, 0.3, 1.0));
     
-    _pViewDelegate = new MyMTKViewDelegate(_pDevice);
+    _pViewDelegate = new MyMTKViewDelegate(_pDevice, _pMtkView);
     _pMtkView->setDelegate(_pViewDelegate);
     
     _pWindow->setContentView(_pMtkView);

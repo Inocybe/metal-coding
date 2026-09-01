@@ -11,7 +11,7 @@
 #include "SharedStructures.h"
 #include "Math.hpp"
 
-Renderer::Renderer(MTL::Device* pDevice) : _pDevice(pDevice->retain()) {
+Renderer::Renderer(MTL::Device* pDevice, MTK::View* pView) : _pDevice(pDevice->retain()) {
     _pCommandQueue = _pDevice->newCommandQueue();
     
     _semaphore = dispatch_semaphore_create(kMaxFramesInFlight);
@@ -19,7 +19,9 @@ Renderer::Renderer(MTL::Device* pDevice) : _pDevice(pDevice->retain()) {
     buildShaders();
     buildBuffers();
     buildDepthStencilStates();
-    buildDepthTexture(800, 600);
+    CGSize sz = pView->drawableSize();
+    std::cerr << "depth texture size: " << sz.width << " x " << sz.height << "\n";
+    buildDepthTexture((int)sz.width, (int)sz.height);
 }
 
 
@@ -70,7 +72,7 @@ void Renderer::draw(MTK::View* pView) {
     MTL::Buffer* pCameraBuffer = _pCameraBuffer[_frame];
     CameraData* pCameraData = reinterpret_cast<CameraData*>(pCameraBuffer->contents());
     pCameraData->perspectiveTransform = math::makePerspective( 45.f * M_PI / 180.f, 1.f, 0.03f, 500.f );
-    pCameraData->worldTransform = math::makeIdentity();
+    pCameraData->worldTransform = math::makeTranslate(0.f, 0.f, -3.f);
     pCameraBuffer->didModifyRange(NS::Range::Make(0, pCameraBuffer->length()));
     
     // create command buffer
@@ -99,7 +101,7 @@ void Renderer::draw(MTK::View* pView) {
     
     pEnc->setDepthStencilState(_pDepthStencilState);
     pEnc->setCullMode(MTL::CullModeBack);
-    pEnc->setFrontFacingWinding(MTL::Winding::WindingCounterClockwise);
+    pEnc->setFrontFacingWinding(MTL::Winding::WindingClockwise);
     
     
     // set render pipeline state for shaders
@@ -109,7 +111,7 @@ void Renderer::draw(MTK::View* pView) {
     pEnc->setVertexBuffer(pCameraBuffer, 0, BufferIndexCameraAttributes);
     
     pEnc->drawIndexedPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle,
-                                NS::UInteger(6),
+                                NS::UInteger(36),
                                 MTL::IndexType::IndexTypeUInt16,
                                 _pIndexBuffer,
                                 NS::UInteger(0),

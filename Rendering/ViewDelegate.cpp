@@ -6,7 +6,7 @@
 //
 #include "ViewDelegate.hpp"
 
-MyMTKViewDelegate::MyMTKViewDelegate(MTL::Device* pDevice) : MTK::ViewDelegate(), _pRenderer(new Renderer(pDevice)) {}
+MyMTKViewDelegate::MyMTKViewDelegate(MTL::Device* pDevice, MTK::View* pView) : MTK::ViewDelegate(), _pRenderer(new Renderer(pDevice, pView)) {}
 
 MyMTKViewDelegate::~MyMTKViewDelegate() {
     delete _pRenderer;

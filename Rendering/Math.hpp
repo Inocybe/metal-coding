@@ -37,4 +37,26 @@ inline simd::float4x4 makePerspective(float fovRadians, float aspect, float znea
                           );
 }
 
+
+inline simd::float4x4 makeTranslate(float x, float y, float z) {
+    using simd::float4;
+    return simd::float4x4((float4){1.f, 0.f, 0.f, 0.f},
+                          (float4){0.f, 1.f, 0.f, 0.f},
+                          (float4){0.f, 0.f, 1.f, 0.f},
+                          (float4){x, y, z, 1.f});
+}
+
+
+
+inline simd::float4x4 makeYRotate(float angleRadians) {
+    using simd::float4;
+    float a = angleRadians;
+    
+    return simd::float4x4((float4){cosf(a), 0.f, sinf(a), 0.f},
+                          (float4){0.f, 1.f, 0.f, 0.f},
+                          (float4){-sinf(a), 0.f, cosf(a), 0.f},
+                          (float4){0.f, 0.f, 0.f, 1.f});
+}
+
+
 }

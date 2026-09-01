@@ -14,7 +14,7 @@
 
 class Renderer {
 public:
-    Renderer(MTL::Device* pDevice);
+    Renderer(MTL::Device* pDevice, MTK::View* pView);
     ~Renderer();
     
     void draw(MTK::View* pView);
